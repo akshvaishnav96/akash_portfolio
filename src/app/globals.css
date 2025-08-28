@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f7fb;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0f1a;
+    --foreground: #e6e6ec;
+  }
+}
+
+body {
+  background: radial-gradient(
+      60% 50% at 10% 10%,
+      rgba(99, 102, 241, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      50% 50% at 90% 10%,
+      rgba(236, 72, 153, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      60% 50% at 30% 100%,
+      rgba(34, 197, 94, 0.1),
+      transparent 60%
+    ),
+    linear-gradient(var(--background), var(--background));
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial;
+  min-height: 100dvh;
+}
+
+/* Subtle card and hover effects */
+.card {
+  transition: transform 300ms ease, box-shadow 300ms ease,
+    background-color 300ms ease;
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.06), 0 8px 28px rgba(2, 6, 23, 0.08);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.12), 0 16px 40px rgba(2, 6, 23, 0.12);
+}
+
+/* Marquee */
+.marquee {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Simple fade-in */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 700ms ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating tech chips */
+.tech-float {
+  position: absolute;
+  padding: 4px 10px;
+  white-space: nowrap;
+  animation-name: floatDiag;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes floatDiag {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0.001deg);
+  }
+  50% {
+    transform: translate3d(-15vw, -10vh, 0) rotate(0.001deg);
+  }
+  100% {
+    transform: translate3d(-30vw, -20vh, 0) rotate(0.001deg);
+  }
+}
+@keyframes floatDiag2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0.001deg);
+  }
+  50% {
+    transform: translate3d(12vw, -12vh, 0) rotate(0.001deg);
+  }
+  100% {
+    transform: translate3d(24vw, -24vh, 0) rotate(0.001deg);
+  }
+}
+@keyframes floatDiag3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0.001deg);
+  }
+  50% {
+    transform: translate3d(-10vw, 10vh, 0) rotate(0.001deg);
+  }
+  100% {
+    transform: translate3d(-20vw, 20vh, 0) rotate(0.001deg);
+  }
+}
